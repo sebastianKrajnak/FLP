@@ -1,6 +1,4 @@
 -- inspired by TuringParse.hs example from FLP class
-{-# LANGUAGE RecordWildCards #-}
-
 module ParseInput where
 
 import Control.Applicative ((<|>))
@@ -46,8 +44,8 @@ parseRules :: Parser [Rule]
 parseRules = endBy parseRule newline
 
 parseRule :: Parser Rule
-parseRule = Rule <$> oneOf ['A'..'Z'] <* string "->" <*> rightSide
-        where rightSide = count 1 (char '#') <|> many1 (oneOf mixNonTerm)
+parseRule = Rule <$> oneOf ['A'..'Z'] <* string "->" <*> rightSideS
+        where rightSideS = count 1 (char '#') <|> many1 (oneOf mixNonTerm)
 
 -- parses the separator
 comma :: Parser Char
@@ -59,10 +57,10 @@ mixNonTerm = ['A'..'Z'] ++ ['a'..'z']
 
 -- checks validity of a grammar
 validate :: Grammar -> Err Grammar
-validate bkg@Grammar{..} = if allOk then Right bkg else Left "Invlaid grammar"
+validate bkg@(Grammar nonTerminalsS terminalsS startS rulesS) = if allOk then Right bkg else Left "Invlaid grammar"
         where
                 allOk = 
-                        all isUpper nonTerminals 
-                        && all isLower terminals 
-                        && elem start nonTerminals 
-                        && not (null rules)     
+                        all isUpper nonTerminalsS
+                        && all isLower terminalsS 
+                        && elem startS nonTerminalsS 
+                        && not (null rulesS)     

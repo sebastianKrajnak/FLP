@@ -23,8 +23,8 @@ data Grammar = Grammar {
 type Err = Either String
 
 instance Show Grammar where
-    show (Grammar nonTerminals terminals start rules) =
-        unlines $ [intercalate "," (map (: []) nonTerminals)] ++ [intercalate "," (map (: []) terminals)] ++ [[start]] ++ [unlines (map show rules)]
+    show (Grammar nonTerminalsS terminalsS startS rulesS) =
+        unlines $ [intercalate "," (map (: []) nonTerminalsS)] ++ [intercalate "," (map (: []) terminalsS)] ++ [[startS]] ++ [unlines (map show rulesS)]
 
 instance Show Rule where
-    show (Rule leftSide rightSide) = [leftSide] ++ "->" ++ rightSide
+    show (Rule leftSideS rightSideS) = [leftSideS] ++ "->" ++ rightSideS

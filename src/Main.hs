@@ -2,7 +2,7 @@ module Main (main) where
 
 import System.Environment (getArgs)
 import System.Exit (die)
-import System.IO(readFile, getLine, putStr, putStrLn, hFlush, stdout)
+import System.IO()
 
 import Types
 import ParseInput
