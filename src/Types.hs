@@ -24,7 +24,7 @@ type Err = Either String
 
 instance Show Grammar where
     show (Grammar nonTerminals terminals start rules) =
-        unlines $ [intercalate "," [nonTerminals]] ++ [intercalate "," [terminals]] ++ [[start]] ++ [unlines (map show rules)]
+        unlines $ [intercalate "," (map (: []) nonTerminals)] ++ [intercalate "," (map (: []) terminals)] ++ [[start]] ++ [unlines (map show rules)]
 
 instance Show Rule where
     show (Rule leftSide rightSide) = [leftSide] ++ "->" ++ rightSide

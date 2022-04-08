@@ -1,4 +1,4 @@
 all:
-	ghc -Wall -o ../flp21-fun -i src/*.hs --make 
+	ghc -Wall -o flp21-fun -i src/*.hs --make 
 clean:
-	rm -rf *.hi *.o flp21-fun
+	rm -rf src/*.hi src/*.o flp21-fun

@@ -28,7 +28,7 @@ parseNonTerminals :: Parser [NonTerminal]
 parseNonTerminals = sepBy1 parseNonTerminal comma
 
 parseNonTerminal :: Parser NonTerminal 
-parseNonTerminal = oneOf ['a'..'z']
+parseNonTerminal = oneOf ['A'..'Z']
 
 -- parses a list of terminals
 parseTerminals :: Parser [Terminal]
@@ -65,4 +65,4 @@ validate bkg@Grammar{..} = if allOk then Right bkg else Left "Invlaid grammar"
                         all isUpper nonTerminals 
                         && all isLower terminals 
                         && elem start nonTerminals 
-                        && not (null rules)
+                        && not (null rules)     
