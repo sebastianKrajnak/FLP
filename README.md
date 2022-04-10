@@ -40,3 +40,16 @@ As stated above program implements algorithm 4.3 from TIN class which removes us
 ## Testing
 
 All testing was done purely by running the project with `testX.in` input file and visually comparing the ouput with the correct output saved in `testX.out`, where X is a number of the test.
+For example 
+```shell
+$ ./flp21-fun -1 test/test1.in
+```
+should return
+```
+A,C
+a
+A
+A->a
+C->a
+
+```
