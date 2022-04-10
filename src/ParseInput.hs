@@ -9,7 +9,7 @@
 module ParseInput where
 
 -- import Control.Applicative ((<|>)) -- un/comment on local with ghc 8.10.7
-import Control.Applicative ((<$>), (<*>), (<$), (<*), (<|>)) -- un/comment when using on Merlin
+import Control.Applicative ((<$>), (<*>), (<*), (<|>)) -- un/comment when using on Merlin
 import Text.Parsec (char, endBy, eof, many1, newline, oneOf, sepBy1, string, count, parse)
 import Text.Parsec.String (Parser)
 import Control.Monad ((<=<))
