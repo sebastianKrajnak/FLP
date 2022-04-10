@@ -25,7 +25,11 @@ where
 ## Description
 
 As stated above program implements algorithm 4.3 from TIN class which removes useless symbols, therefore removing unreachable rules, non-terminating terminals and unreachable terminals. Input grammar is validated before parsing to check if each set only contains the correct symbols i.e. non-terminals are only capital letters, terminals are lowercase etc. Parsing is done through `Text.Parsec` library and was inspired by the TuringParse.hs demo from FLP class ([source](https://wis.fit.vutbr.cz/FIT/st/cfs.php.cs?file=%2Fcourse%2FFLP-IT%2Fpclabs%2FTuring-machine%2FTuringParse.hs&cid=14578 "Source")). Application of each algorithm step is done depending on the chosen input argument. Source codes are split into multiple files:
-* Main.hs - does what you would expect a main file to do, handles input, output and running the whole program
-* ParseInput.hs - contains parsers for each set in the grammar, master parser for the whole grammar and handles parsing and validity checking before parsing
-* Types.hs - contains custom data types used throughout the program, most important ones are `Grammar` and `Rule`, the rest could be replaced by standard data types, however naming them after what they represent makes the code visually clearer
-* SimplifyAlg.hs - handles the whole simplification algorithm (or well just the first half I managed to do)
+* `Main.hs` - does what you would expect a main file to do, handles input, output and running the whole program
+* `ParseInput.hs` - contains parsers for each set in the grammar, master parser for the whole grammar and handles parsing and validity checking before parsing
+* `Types.hs` - contains custom data types used throughout the program, most important ones are `Grammar` and `Rule`, the rest could be replaced by standard data types, however naming them after what they represent makes the code visually clearer
+* `SimplifyAlg.hs` - handles the whole simplification algorithm (or well just the first half I managed to do)
+
+## Testing
+
+All testing was done purely by running the project with `testX.in` input file and visually comparing the ouput with the correct output saved in `testX.out`, where X is a number of the test.
