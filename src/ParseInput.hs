@@ -8,7 +8,8 @@
 -- https://wis.fit.vutbr.cz/FIT/st/cfs.php.cs?file=%2Fcourse%2FFLP-IT%2Fpclabs%2FTuring-machine%2FTuringParse.hs&cid=14578
 module ParseInput where
 
-import Control.Applicative ((<|>))
+-- import Control.Applicative ((<|>)) -- un/comment on local with ghc 8.10.7
+import Control.Applicative ((<$>), (<*>), (<$), (<*), (<|>)) -- un/comment when using on Merlin
 import Text.Parsec (char, endBy, eof, many1, newline, oneOf, sepBy1, string, count, parse)
 import Text.Parsec.String (Parser)
 import Control.Monad ((<=<))
