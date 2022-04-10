@@ -9,12 +9,18 @@
 module Main (main) where
 
 import System.Environment (getArgs)
-import System.Exit (die)
-import System.IO()
+-- import System.Exit (die)
+-- import System.IO()
 
 import Types
 import ParseInput ( parseGrammar )
 import SimplifyAlg ( stepOne )
+
+import System.IO (hPutStrLn, stderr)
+import System.Exit (exitFailure)
+
+die :: String -> IO a
+die s = hPutStrLn stderr s >> exitFailure
 
 -- Main program
 main :: IO ()
