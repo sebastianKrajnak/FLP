@@ -39,7 +39,7 @@ As stated above program implements algorithm 4.3 from TIN class which removes us
 
 ## Testing
 
-All testing was done purely by running the project with `testX.in` input file and visually comparing the ouput with the correct output saved in `testX.out`, where X is a number of the test.
+All testing was done purely by running the project with `testX.in` input file and visually comparing the ouput with the correct output saved in `testX.out`, where X is a number of the test. Additionally you can use either `make testi` to load and display input grammar or `make test1` to test the first step of algorithm with `test/test1.in` input.
 For example 
 ```shell
 $ ./flp21-fun -1 test/test1.in
