@@ -9,18 +9,21 @@
 module Main (main) where
 
 import System.Environment (getArgs)
--- import System.Exit (die)
--- import System.IO()
+import System.Exit (die) -- uncomment on local with ghc 8.10.7
+import System.IO() -- uncomment on local with ghc 8.10.7
 
 import Types
 import ParseInput ( parseGrammar )
 import SimplifyAlg ( stepOne )
 
+-- uncomment when using on Merlin 
+{-
 import System.IO (hPutStrLn, stderr)
 import System.Exit (exitFailure)
 
 die :: String -> IO a
 die s = hPutStrLn stderr s >> exitFailure
+-}
 
 -- Main program
 main :: IO ()
