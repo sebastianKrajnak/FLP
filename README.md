@@ -17,10 +17,10 @@ To build the project use terminal command `make`, project is compiled using `ghc
 After building the project, as per section above, it can be run using :
 
 ```shell
-$ ./flp21-fun (-i|-1) [input_file]
+$ ./flp21-fun [-i|-1] FILE
 ```
 where:
-`input_file` is the name of the input file, located in the `test` folder and has the `.in` suffix. Option `-i` runs the program without any changes made to the grammar, simply loads up a grammar from the input file, parses it using `Text.Parsec` Haskell library and prints out onto `stdout` the internal representation with the same formating as the input had. Option `-1` applies the first step of algorithm 4.3, removing non-terminating non-terminals from the grammar and rules containing said non-terminals on either side, before printing the resulting grammar on `stdout`. 
+`FILE` is the name of the input file, located in the `test` folder and has the `.in` suffix. Option `-i` runs the program without any changes made to the grammar, simply loads up a grammar from the input file, parses it using `Text.Parsec` Haskell library and prints out onto `stdout` the internal representation with the same formating as the input had. Option `-1` applies the first step of algorithm 4.3, removing non-terminating non-terminals from the grammar and rules containing said non-terminals on either side, before printing the resulting grammar on `stdout`. 
 
 ## Description
 
