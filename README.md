@@ -11,7 +11,7 @@ Nestihol som implementovať prepínač `-2`, prepínače `-i` a `-1` by mali fun
 * Text.Parsec Haskell library (if not installed)
 
 ## Build
-To build the project use terminal command `make`, project is compiled using `ghc` compiler with `-Wall` option and creates `flp21-fun` executable file.
+To build the project use terminal command `make`, project is compiled using `ghc` compiler with option `-Wall` and creates `flp21-fun` executable file.
 
 ## Running the project
 After building the project, as per section above, it can be run using :
