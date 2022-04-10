@@ -1,4 +1,11 @@
--- inspired by TuringParse.hs example from FLP class
+{-
+    Simplify context-free grammar algorithm application based on TIN algorithm 4.3
+    Author: Sebastian Krajnak
+    Date: 10.4.2022
+-}
+
+-- Inspired by TuringParse.hs demo from FLP class located at
+-- https://wis.fit.vutbr.cz/FIT/st/cfs.php.cs?file=%2Fcourse%2FFLP-IT%2Fpclabs%2FTuring-machine%2FTuringParse.hs&cid=14578
 module ParseInput where
 
 import Control.Applicative ((<|>))
@@ -52,7 +59,7 @@ comma :: Parser Char
 comma = char ','
 
 -- parses a mix of terminals and non-terminals (left side of a rule)
-mixNonTerm :: [TermNonTerminal] 
+mixNonTerm :: TermNonTerminal
 mixNonTerm = ['A'..'Z'] ++ ['a'..'z']
 
 -- checks validity of a grammar
