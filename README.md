@@ -1,4 +1,4 @@
-# Simplift context-free grammar
+# Simplify context-free grammar
 
 Program which applies algorithm 4.3 from TIN class ([source](http://www.fit.vutbr.cz/study/courses/TIN/public/Texty/TIN-studijni-text.pdf "Source")) to remove useless symbols, works in two steps depeneding on the input argument.
 
