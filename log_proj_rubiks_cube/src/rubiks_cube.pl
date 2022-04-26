@@ -1,6 +1,10 @@
+/*
+	Rubiks cube solver - project at BUT FIT
+	Author: Sebastian Krajnak
+	Date: 24.4.2022
+*/
 
-% -------------------------------------------------------------------------
-% loading from input file copied from input2.pl located at wis.fit.vutbr.cz/FIT/st/cfs.php.cs?file=%2Fcourse%2FFLP-IT%2Fprojects%2Flog%2Finput2.pl&cid=14578
+% loading from input file copied from example input2.pl located at wis.fit.vutbr.cz/FIT/st/cfs.php.cs?file=%2Fcourse%2FFLP-IT%2Fprojects%2Flog%2Finput2.pl&cid=14578
 /** cte radky ze standardniho vstupu, konci na LF nebo EOF */
 read_line(L,C) :-
 	get_char(C),
@@ -21,7 +25,6 @@ read_lines(Ls) :-
 	  read_lines(LLs), Ls = [L|LLs]
 	).
 
-
 /** rozdeli radek na podseznamy */
 split_line([],[[]]) :- !.
 split_line([' '|T], [[]|S1]) :- !, split_line(T,S1).
@@ -34,7 +37,7 @@ split_lines([],[]).
 split_lines([L|Ls],[H|T]) :- split_lines(Ls,T), split_line(L,H).
 
 % -------------------------------------------------------------------------
-% Map loaded cube structure into internal cube structure, easier to read, less places for error
+% Map loaded cube structure into internal cube structure, easier to read, less room for error
 map_cube([
 	[[U1,U2,U3]],
 	[[U4,U5,U6]],
@@ -85,6 +88,20 @@ print_cube([
 	format("~w~w~w~n", [D1,D2,D3]),
 	format("~w~w~w~n", [D4,D5,D6]),
 	format("~w~w~w~n", [D7,D8,D9]).
+
+%Checks if a cube is in a solved state
+check_solved([
+	U,U,U,
+	U,U,U,
+	U,U,U,
+
+	F,F,F, R,R,R, B,B,B, L,L,L,
+	F,F,F, R,R,R, B,B,B, L,L,L,
+	F,F,F, R,R,R, B,B,B, L,L,L,
+	
+	D,D,D,
+	D,D,D,
+	D,D,D]).
 
 % -------------------------------------------------------------------------
 % Define possible CLOCKWISE cube rotations
@@ -404,7 +421,11 @@ rotate_cdown([
 
 % -------------------------------------------------------------------------
 % State search and cube solve
-
+/*
+pokud vezmeš ten move, tak můžeš implementovat buď tak, že vypočteš další stavy z aktuálních a ty 
+appendneš do listu a nad tím spustíš další solve (BFS) a nebo uděláš move, který ti vytvoří nový stav 
+a nad tím provedeš další move... (DFS)
+*/
 
 % -------------------------------------------------------------------------
 % Main function of the program
