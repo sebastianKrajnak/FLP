@@ -427,6 +427,8 @@ appendneš do listu a nad tím spustíš další solve (BFS) a nebo uděláš mo
 a nad tím provedeš další move... (DFS)
 */
 
+solve_cube(Cube, Next_cube, Counter):- .
+
 % -------------------------------------------------------------------------
 % Main function of the program
 main:-
