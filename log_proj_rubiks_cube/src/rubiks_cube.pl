@@ -424,20 +424,20 @@ rotate_cdown([
 % State search and cube solve
 % Inspired by FLP CV5 and CV6 
 % hard-coded clockwise rotations 
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_up(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_front(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
 rotate(Cube,_,[Cube]):- check_solved(Cube),!.
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_up(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_front(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
 rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_right(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_back(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_left(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_down(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_back(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_left(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_down(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
 % hard-coded counter-clockwise rotations
 rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cup(Cube, Next_cube), C is Counter + 1,rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cfront(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cright(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cback(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cleft(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cdown(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cfront(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cright(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cback(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cleft(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cdown(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
 
 solve_cube(Cube, Result):- rotate(Cube, 0, Result).
 
