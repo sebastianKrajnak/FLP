@@ -87,7 +87,8 @@ print_cube([
 	format("~w~w~w ~w~w~w ~w~w~w ~w~w~w~n", [F7,F8,F9, R7,R8,R9, B7,B8,B9, L7,L8,L9]),
 	format("~w~w~w~n", [D1,D2,D3]),
 	format("~w~w~w~n", [D4,D5,D6]),
-	format("~w~w~w~n", [D7,D8,D9]).
+	format("~w~w~w~n", [D7,D8,D9]),
+	nl. 
 
 %Checks if a cube is in a solved state
 check_solved([
@@ -421,14 +422,27 @@ rotate_cdown([
 
 % -------------------------------------------------------------------------
 % State search and cube solve
-/*
-pokud vezmeš ten move, tak můžeš implementovat buď tak, že vypočteš další stavy z aktuálních a ty 
-appendneš do listu a nad tím spustíš další solve (BFS) a nebo uděláš move, který ti vytvoří nový stav 
-a nad tím provedeš další move... (DFS)
-*/
+% Inspired by FLP CV5 and CV6 
+% hard-coded clockwise rotations 
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_up(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_front(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube,_,[Cube]):- check_solved(Cube),!.
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_right(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_back(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_left(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_down(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+% hard-coded counter-clockwise rotations
+rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cup(Cube, Next_cube), C is Counter + 1,rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cfront(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cright(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cback(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cleft(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+%rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cdown(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
 
-solve_cube(Cube, Next_cube, Counter):- .
+solve_cube(Cube, Result):- rotate(Cube, 0, Result).
 
+print_path([]).
+print_path([Cube|Rest]):- print_cube(Cube), print_path(Rest).
 % -------------------------------------------------------------------------
 % Main function of the program
 main:-
@@ -437,4 +451,11 @@ main:-
 	split_lines(LL,S),
 	map_cube(S,C),
 	print_cube(C),
+	/* rotate_right(C,NC),
+	print_cube(NC),
+	rotate_cup(NC,NNC),
+	print_cube(NNC), */
+	solve_cube(C, Res),
+	print_path(Res),
+
 	halt.
