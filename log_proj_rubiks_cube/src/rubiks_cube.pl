@@ -1,6 +1,6 @@
 /*
 	Rubiks cube solver - project at BUT FIT
-	Author: Sebastian Krajnak
+	Author: Sebastian Krajnak - xkrajn05
 	Date: 30.4.2022
 */
 
