@@ -3,5 +3,5 @@ all:
 clean:
 	rm -rf flp21-log
 run:
-	./flp21-log < test/test1.in
-	./flp21-log < test/test2.in
+	time ./flp21-log < test/test1.in
+	time ./flp21-log < test/test2.in
