@@ -424,22 +424,22 @@ rotate_cdown([
 % State search and cube solve
 % Inspired by FLP CV5 and CV6 
 % hard-coded clockwise rotations 
-rotate(Cube,_,[Cube]):- check_solved(Cube),!.
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_up(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_front(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_right(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_back(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_left(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_down(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, _, [Cube]):- check_solved(Cube).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_up(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_front(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_right(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_back(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_left(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_down(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
 % hard-coded counter-clockwise rotations
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cup(Cube, Next_cube), C is Counter + 1,rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cfront(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cright(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cback(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cleft(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
-rotate(Cube, Counter, [Cube|Result]):- Counter \= 20, rotate_cdown(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_cup(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_cfront(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_cright(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_cback(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_cleft(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
+rotate(Cube, Counter, [Cube|Result]):- Counter < 8, rotate_cdown(Cube, Next_cube), C is Counter + 1, rotate(Next_cube, C, Result).
 
-solve_cube(Cube, Result):- rotate(Cube, 0, Result).
+solve_cube(Cube, Path):- rotate(Cube, 0, Path).
 
 print_path([]).
 print_path([Cube|Rest]):- print_cube(Cube), print_path(Rest).
@@ -447,15 +447,17 @@ print_path([Cube|Rest]):- print_cube(Cube), print_path(Rest).
 % Main function of the program
 main:-
 	prompt(_, ''),
-	read_lines(LL),
-	split_lines(LL,S),
-	map_cube(S,C),
-	print_cube(C),
+	read_lines(Lines),
+	split_lines(Lines, Split_lines),
+	map_cube(Split_lines, Cube),
+	format("~w~n","Input:"),
+	print_cube(Cube),
 	/* rotate_right(C,NC),
 	print_cube(NC),
 	rotate_cup(NC,NNC),
 	print_cube(NNC), */
-	solve_cube(C, Res),
-	print_path(Res),
+	format("~w~n","Output:"),
+	solve_cube(Cube, Path),
+	print_path(Path),
 
 	halt.
