@@ -42,7 +42,7 @@ $ make clean
 ```
 
 ## Description
-Loading and parsing the data from the input file is purely copied from a provided example from class located at ([source](https://wis.fit.vutbr.cz/FIT/st/cfs.php.cs?file=%2Fcourse%2FFLP-IT%2Fprojects%2Flog%2Finput2.pl&cid=14578 "Source")). All possible rotations of the cube 6 (UP, FRONT, LEFT, RIGHT, BACK, DOWN) for clockwise and 6 for counter clockwise rotation have been hardcoded using unification. Predicate `check_solve` simply checks if all sides have only one colour on each side. `map_cube` predicate is uded to map the cube from the parsed format into the form at used in the implementation. The solver uses DLS with the max depth of 8 to recursively search through all possible rotations of the cube until it finds a orrect one.
+Loading and parsing the data from the input file is purely copied from a provided example from class located at ([input2.pl](https://wis.fit.vutbr.cz/FIT/st/cfs.php.cs?file=%2Fcourse%2FFLP-IT%2Fprojects%2Flog%2Finput2.pl&cid=14578 "Source")). All possible rotations of the cube 6 (UP, FRONT, LEFT, RIGHT, BACK, DOWN) for clockwise and 6 for counter clockwise rotation have been hardcoded using unification. Predicate `check_solve` simply checks if all sides have only one colour on each side. `map_cube` predicate is uded to map the cube from the parsed format into the form at used in the implementation. The solver uses DLS with the max depth of 8 to recursively search through all possible rotations of the cube until it finds a orrect one.
 
 ## Testing
 
