@@ -1,7 +1,7 @@
 /*
 	Rubiks cube solver - project at BUT FIT
 	Author: Sebastian Krajnak
-	Date: 24.4.2022
+	Date: 30.4.2022
 */
 
 % loading from input file copied from example input2.pl located at wis.fit.vutbr.cz/FIT/st/cfs.php.cs?file=%2Fcourse%2FFLP-IT%2Fprojects%2Flog%2Finput2.pl&cid=14578
