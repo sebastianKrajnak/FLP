@@ -14,8 +14,8 @@ DDD
 ```
 where `U` is the top of the cube, `F` is the front, `R` and `L` are the left and right, `B` is the back and `D` is the bottom of the cube. The output is a sequence of moves that lead to a solved cube.
 
-## NE/FUNGUJE
-Solver vyrieši obidve testované kocky úspešne avšak vykonáva zbytočné rotácie až pokiaľ nebude counter na maxime tj ý
+## PROBLEMY, BUGY, FUNKCNOST
+Solver vyrieši obidve testované kocky úspešne avšak vykonáva zbytočné rotácie až pokiaľ nebude counter na maxime tj 7
 
 ## Requirements
 * ghc version 8.4.2
