@@ -5,7 +5,8 @@ Program which applies algorithm 4.3 from TIN class ([source](http://www.fit.vutb
 ## NEDOKONCENE
 (delete after final grading)
 Nestihol som implementovať prepínač `-2`, prepínače `-i` a `-1` by mali fungovať správne.
-5/12
+
+Points: 5/12
 
 ## Requirements
 * ghc version 8.10.7
